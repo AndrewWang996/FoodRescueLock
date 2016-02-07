@@ -1,0 +1,19 @@
+{
+  "name": "foodrescue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "nodelock.js",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "dotenv": "^1.2.0",
+    "express": "^4.13.3",
+    "serialport": "^2.0.6",
+    "twilio": "^2.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
