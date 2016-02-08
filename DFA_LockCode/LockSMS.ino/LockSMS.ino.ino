@@ -44,18 +44,16 @@ void loop() {
   while (Serial.available()) {
     char inChar = (char)Serial.read();
     if(inChar == 'V'){ // end character for locking
-      if (myservo.read() >= 90) {
-        Serial.println("L");
-        // myservo.write(lock); // this is for servos
-        digitalWrite(lockPin, LOW);
-        delay(3000);
-      }
-      else {
-        Serial.println("U");
-        // myservo.write(unlock); // this is for servos
-        digitalWrite(lockPin, HIGH);
-        delay(3000);
-      }
+      Serial.println("L");
+      // myservo.write(lock); // this is for servos
+      digitalWrite(lockPin, LOW);
+      delay(3000);
+    }
+    else if(inChar == 'W'){
+      Serial.println("U");
+      // myservo.write(unlock); // this is for servos
+      digitalWrite(lockPin, HIGH);
+      delay(3000);
     }
   }  
 }

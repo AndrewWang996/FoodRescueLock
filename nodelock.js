@@ -1,7 +1,8 @@
 var twilio = require('twilio'),
     SerialPort = require("serialport").SerialPort,
     express = require('express'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    Promise = require('bluebird');
 
 require('dotenv').load();
 
@@ -42,12 +43,15 @@ app.get('/', webhook, function(req, res){
 
 		console.log("verified number!");
 
+
 		serialPort.once('data', function(data) {
 			if (data.toString().indexOf('U') > -1) {
 				//check if the Arduino returned a U for unlocking
+				console.log("hello got a U");
 				sendMessage(res, 'Unlocking!');
 			}
 			else if (data.toString().indexOf('L') > -1) {
+				console.log("got an L");
 				sendMessage(res, 'Locking!');
 			}
 			else {
@@ -56,7 +60,7 @@ app.get('/', webhook, function(req, res){
 			console.log('data received: ' + data);
 		});
 
-		serialPort.write("V", function(err, results) {
+		serialPort.write("W", function(err, results) {
 			if (err) {
 				console.log('err ' + err);
 			}
